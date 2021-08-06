@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
+
+body {
+
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1 {
+  margin: 20px;
+  padding: .5em 0em .5em 0em;
+  color: #6E470B;
+  text-align: center;
+}
+
+button {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+input {
+  border: 1px solid #000;
+  width: 285px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 5px;
+  display: inline-block;
+  font-size: 16pt;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}
+
+.calculadora {
+  width: 310px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #4a4a4a;
+  border-radius: 20px;
+  background: #c76363;
+  text-align: center;
+}
+
+.screen input {
+  background: #dbdbdb;
+  text-align: right;
+
+}
+
+.buttons_2 button {
+  width: 125px;
+  margin-bottom: 10px;
+  font-size: 14pt;
+  display: inline-block;
+  padding: 8px 0px;
+  background-color: #bf7300;
+  border-color: #000;
+}
+
+.buttons_5 button {
+  width: 55px;
+  margin-bottom: 8px;
+  padding: 7px 0px;
+  display: inline-block;
+  font-size: 12pt;
+}
+
+/*********************************************************************************/
+/* Pie de Página                                                                 */
+/*********************************************************************************/
+
+#copyright {
+  padding-top: .5em;
+  margin: auto;
+  font-size: 0.85em;
+  letter-spacing: 0.10em;
+  text-align: center;
+  color: #424242;
+}
+
+#copyright a{
+  text-decoration: none;
+  color: #313131;
+}
+
+#copyright a:visited{
+  color: #EDA437;
+}
+
+#copyright p{
+  text-align: center;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <title>Calculadora</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+    <!--Desarrollemos una calculadora: Tendrá un solo display. Botones de números del 0 al 9; Operaciones: + - * / ; El boton = muestra el resultado en el display.
+    FUNCIONAMIENTO: Se verá el primer operador. Al tocar un signo, se borra el display para ver el Segundo operador. El = muestra el resultado -->
+
+     <!--Encabezado -->
+     <header>
+       <h1>Bienvenido a Mi Calculadora</h1>
+     </header>
+
+     <!--Comienza la calculadora -->
+     <div class="container">
+       <div class="calculadora">
+         <div class="screen">
+           <input type="text" id="visor" disabled="disabled">
+         </div>
+
+         <div class="buttons_2">
+           <button type="button" onclick="clearE()">CE</button>
+           <button type="button" onclick="clearC()">C</button>
+         </div>
+
+         <div class="buttons_5">
+           <button type="button" id='7' onclick="tecladoNum1('7')">7</button>
+           <button type="button" id='8' onclick="tecladoNum1('8')">8</button>
+           <button type="button" id='9' onclick="tecladoNum1('9')">9</button>
+           <button type="button" onclick="operacion('*')">*</button>
+           <button type="button" onclick="operacion('/')">/</button>
+         </div>
+
+         <div class="buttons_5">
+           <button type="button" id="4" onclick="tecladoNum1('4')">4</button>
+           <button type="button" id="5" onclick="tecladoNum1('5')">5</button>
+           <button type="button" id="6" onclick="tecladoNum1('6')">6</button>
+           <button type="button" onclick="operacion('+')">+</button>
+           <button type="button" onclick="operacion('-')">-</button>
+         </div>
+
+         <div class="buttons_5">
+           <button type="button" id='1' onclick="tecladoNum1('1')">1</button>
+           <button type="button" id='2' onclick="tecladoNum1('2')">2</button>
+           <button type="button" id='3' onclick="tecladoNum1('3')">3</button>
+           <button type="button" id='0' onclick="tecladoNum1('0')">0</button>
+           <button type="button" onclick="igual()">=</button>
+         </div>
+       </div>
+     </div>
+     
+     <!--Pie de Página -->
+     <div id="copyright">
+       <p>&copy; 2021 Mi Calculadora | Todos los derechos reservados | Diseñado por <a href="#" rel="nofollow"><b>ElenaSH</b></a>.</p>
+     </div>
+
+     <script>
+
+       //Variables Globales.
+       var visual = ''; // Variable que guarda lo que se va a mostrar en la pantalla.
+       var acum1 = ''; //Variable que acumula la operación en proceso;
+       var result = ''; //Variable donde se guarda el resultado de las operaciones.
+       var simbolOpera = 'no'; //Variable que va a tomar el simbolo de la operación.
+       var selectOpera = false; //Variable que dice si hay una operación en curso o no.
+
+
+
+       //Evalua si hay una operación en curso al apretar un botón numérico.
+       function tecladoNum1(nro) {
+         if (selectOpera) {
+           visual = nro;
+           document.getElementById('visor').value = visual;
+           selectOpera = false;
+         } else {
+           tecladoNum2(nro);
+         }
+       }
+
+        //Esta función se activa en el caso de que NO haya una operación en curso, cuando la calculadora esté sin ningún número y cuando soalmente se hayan digitado números.
+       function tecladoNum2(nro) {
+         if (visual == ""){
+           visual = nro;
+           document.getElementById('visor').value = visual;
+         } else {
+           visual = visual + nro;
+           document.getElementById('visor').value = visual;
+         }
+       }
+
+       //Borra todo "Clear Everything".
+       function clearE() {
+         visual = '';
+         acum1 = '';
+         result = '';
+         simbolOpera = 'no';
+         selectOpera = false;
+         document.getElementById('visor').value = '';
+       }
+
+       //Borra lo último que se escribió "Clear".
+       function clearC() {
+         visual = visual.toString();
+         visual = visual.slice(0,-1);
+         if (visual != "") {
+           document.getElementById('visor').value = visual;
+         } else {
+           displayNum = "";
+           document.getElementById('visor').value = visual;
+         }
+       }
+
+       //Operaciones básicas "Suma, Resta, Multiplicación y División"
+       function operacion(parasigno) {
+         igual();
+         visual = document.getElementById('visor').value;
+         acum1 = visual;
+         selectOpera = true;
+         simbolOpera = parasigno;
+       }
+
+       //Función Resultado "Igual".
+       function igual() {
+         if (simbolOpera != "no") {
+           result = eval (acum1+simbolOpera+visual);
+           document.getElementById('visor').value = result;
+           simbolOpera = "no";
+           selectOpera = true;
+           visual = document.getElementById('visor').value;
+         }
+       }
+
+     </script>
+  </body>
+</html>
